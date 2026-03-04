@@ -10,6 +10,7 @@ function UserModal({ show, user, onHide }) {
       {/* TODO 3.2: Modal must use show={show} and onHide={onHide} */}
       {/* TODO 3.2: Must include Header/Title/Body/Footer + Close button */}
       {/* TODO 3.2: Body must show avatar (user-avatar-large) + name/email/phone/website */}
+      
     </>
   );
 }
