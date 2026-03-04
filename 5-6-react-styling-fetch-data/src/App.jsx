@@ -204,18 +204,6 @@ export default function App() {
      ========================================================= */
   useEffect(() => {
     // TODO 2.1: Implement fetching users here (see lab instructions)
-
-  }, []);
-
-  /* =========================================================
-     TODO 2.2 — FILTER USERS BY NAME
-     File: src/App.jsx
-     ---------------------------------------------------------
-     Implement filtering logic inside this useEffect.
-     Dependency array MUST be: [searchTerm, users]
-     ========================================================= */
-  useEffect(() => {
-    // TODO 2.2: Implement filtering users here (see lab instructions)
     const fetchData = async () => {
     try {
       setLoading(true);
@@ -232,8 +220,28 @@ export default function App() {
     } finally {
       setLoading(false);
     }
+   fetchData();
   };
+}, []);
 
+  /* =========================================================
+     TODO 2.2 — FILTER USERS BY NAME
+     File: src/App.jsx
+     ---------------------------------------------------------
+     Implement filtering logic inside this useEffect.
+     Dependency array MUST be: [searchTerm, users]
+     ========================================================= */
+  useEffect(() => {
+    // TODO 2.2: Implement filtering users here (see lab instructions)
+    if (searchTerm.trim() === "") {
+      setFilteredUsers(users);
+   } else {
+      // 2) Filter by name ONLY (case-insensitive)
+      const filtered = users.filter((user) =>
+         user.name.toLowerCase().includes(searchTerm.toLowerCase())
+   );
+   setFilteredUsers(filtered);
+  }
   fetchData();
   }, [searchTerm, users]);
 
